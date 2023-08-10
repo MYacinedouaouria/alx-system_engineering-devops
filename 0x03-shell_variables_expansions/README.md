@@ -6,3 +6,4 @@
 
 4-global_variables : a script that ists environment variables.\n
 5-local_variables : a script that lists all local variables and environment variables, and functions.
+a script that creates a new local variable.
