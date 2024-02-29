@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# thsis script diplay indefinitly a string and do sleep,
+# and if a SEGTERM is sent then print I am invincible!!!
+i=0
+while [ $i -eq 0 ]
+do
+	trap 'echo "I am invincible!!!"' SIGTERM
+	echo "To infinity and beyond"
+	sleep 2
+done
