@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# this script instals nginx
+
+apt-get update
+
+# Install Nginx
+apt-get install -y nginx
+
+service nginx start
+
+
+# Create "Hello World!" index.html for the default server block
+echo "Hello World!" > /var/www/html/index.html
+
+nginx_config="
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+"
+
+echo "$nginx_config" > /etc/nginx/sites-available/default
+
+service nginx restart
